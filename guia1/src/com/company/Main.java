@@ -31,5 +31,13 @@ public class Main {
         System.out.println("\n\nEjercicio 3:");
         ItemVenta caramelos = new ItemVenta(01,"Caramelos Butter toffess", 150,2.25);
         System.out.println(caramelos);
+
+        //4)
+        System.out.println("\n\nEjercicio 4:");
+        BankAccount myAcc = new BankAccount(02,"Leandro",15000);
+        myAcc.credit(2500);
+        myAcc.debit(1500);
+        myAcc.debit(30000);
+        System.out.println(myAcc);
     }
 }
