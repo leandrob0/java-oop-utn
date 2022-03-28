@@ -21,11 +21,15 @@ public class Main {
         //2)
         Empleado carlos = new Empleado(23456345,"Carlos","Guiterrez",25000);
         Empleado ana = new Empleado(34234123,"Ana", "Sanchez", 27500);
-        System.out.println("\n\nEjercicio 2");
+        System.out.println("\n\nEjercicio 2:");
         System.out.println(carlos);
         System.out.println(ana);
         carlos.raiseSalary(15);
         System.out.println("Carlos anual salary after raise: " + carlos.anualSalary());
 
+        //3)
+        System.out.println("\n\nEjercicio 3:");
+        ItemVenta caramelos = new ItemVenta(01,"Caramelos Butter toffess", 150,2.25);
+        System.out.println(caramelos);
     }
 }
