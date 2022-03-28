@@ -17,5 +17,15 @@ public class Main {
         System.out.println("Perimetro: " + rec.calculatePerimetro() + ". Area: " + rec.calculateArea());
         Rectangle defo = new Rectangle();
         System.out.println("Ancho: " + defo.getAncho() + ". Alto: " + defo.getAlto());
+
+        //2)
+        Empleado carlos = new Empleado(23456345,"Carlos","Guiterrez",25000);
+        Empleado ana = new Empleado(34234123,"Ana", "Sanchez", 27500);
+        System.out.println("\n\nEjercicio 2");
+        System.out.println(carlos);
+        System.out.println(ana);
+        carlos.raiseSalary(15);
+        System.out.println("Carlos anual salary after raise: " + carlos.anualSalary());
+
     }
 }
