@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.utils.Rectangle;
+import com.company.utils.*;
 
 public class Main {
 
