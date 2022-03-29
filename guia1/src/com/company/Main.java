@@ -39,5 +39,16 @@ public class Main {
         myAcc.debit(1500);
         myAcc.debit(30000);
         System.out.println(myAcc);
+
+        //5)
+        System.out.println("\n\nEjercicio 5:");
+        Hora horita = new Hora(21,11,35);
+        System.out.println(horita);
+        int contador = 0;
+        while(contador < 30) {
+            horita.aumentarSegundos();
+            contador++;
+        }
+        System.out.println(horita.decrementarSegundos());
     }
 }
