@@ -1,6 +1,7 @@
 package com.company;
 import com.company.ejercicio1.*;
 import com.company.ejercicio2.*;
+import com.company.ejercicio3.*;
 
 public class Main {
 
@@ -10,6 +11,9 @@ public class Main {
 
         // 2)
         ejercicio2();
+
+        // 3)
+        ejercicio3();
     }
 
     public static void ejercicio1() {
@@ -59,5 +63,30 @@ public class Main {
         System.out.println(facturaCliente1.getTotal());
         System.out.println(facturaCliente1.totalWithDiscount());
         System.out.println(facturaCliente1);
+    }
+
+    public static void ejercicio3() {
+        System.out.println("\nEJERCICIO 3.\n");
+
+        //a)
+        ClienteCuenta cliente = new ClienteCuenta("Leandro Bovino", 'M');
+        System.out.println(cliente);
+
+        //b)
+        Cuenta cuenta = new Cuenta(10000,cliente);
+
+        //c)
+        cuenta.depositar(2000);
+        System.out.println(cuenta.getBalance());
+        cuenta.extraer(2000);
+        System.out.println(cuenta.getBalance());
+
+        //d)
+        cuenta.extraer(12000);
+        System.out.println(cuenta.getBalance());
+
+        //e)
+        System.out.println("Historial: ");
+        System.out.println(cuenta.getHistorial());
     }
 }
