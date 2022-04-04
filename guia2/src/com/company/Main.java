@@ -13,8 +13,7 @@ public class Main {
     }
 
     public static void ejercicio1() {
-        System.out.println("EJERCICIO 1.");
-        System.out.println();
+        System.out.println("EJERCICIO 1.\n");
         Autor a = new Autor();
         Autor aux = new Autor("Leandro","Bovino","leandro@gmail.com",'M');
 
@@ -45,9 +44,7 @@ public class Main {
     }
 
     public static void ejercicio2() {
-        System.out.println();
-        System.out.println("EJERCICIO 2.");
-        System.out.println();
+        System.out.println("\nEJERCICIO 2.\n");
 
         Cliente cliente1 = new Cliente("Leandro Bovino", "leandro@gmail.com", 15);
         System.out.println(cliente1);
