@@ -1,10 +1,20 @@
 package com.company;
 import com.company.ejercicio1.*;
+import com.company.ejercicio2.*;
 
 public class Main {
 
     public static void main(String[] args) {
         // 1)
+        ejercicio1();
+
+        // 2)
+        ejercicio2();
+    }
+
+    public static void ejercicio1() {
+        System.out.println("EJERCICIO 1.");
+        System.out.println();
         Autor a = new Autor();
         Autor aux = new Autor("Leandro","Bovino","leandro@gmail.com",'M');
 
@@ -31,6 +41,26 @@ public class Main {
         l.addAutor(aux);
 
         System.out.println("Autor(es/as) del libro: " + l.getAutors());
-        System.out.println("\n" + l.libroInfo());
+        System.out.println(l.libroInfo());
+    }
+
+    public static void ejercicio2() {
+        System.out.println();
+        System.out.println("EJERCICIO 2.");
+        System.out.println();
+
+        Cliente cliente1 = new Cliente("Leandro Bovino", "leandro@gmail.com", 15);
+        System.out.println(cliente1);
+
+        Factura facturaCliente1 = new Factura(cliente1);
+        ItemVenta coca = new ItemVenta("Coca cola","Lata coca cola",5.45);
+        ItemVenta pepsi = new ItemVenta("Pepsi","Lata pepsi",3.50);
+
+        facturaCliente1.addItemVenta(coca);
+        facturaCliente1.addItemVenta(pepsi);
+
+        System.out.println(facturaCliente1.getTotal());
+        System.out.println(facturaCliente1.totalWithDiscount());
+        System.out.println(facturaCliente1);
     }
 }
