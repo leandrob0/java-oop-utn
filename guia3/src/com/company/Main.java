@@ -42,7 +42,5 @@ public class Main {
         System.out.println(circulo);
         System.out.println(rectangulo);
         System.out.println(cuadrado);
-
-        System.out.println("Chau");
     }
 }
