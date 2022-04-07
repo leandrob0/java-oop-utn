@@ -9,11 +9,6 @@ class Circulo {
         this.color = "Rojo";
     }
 
-    public Circulo(double radio, String color) {
-        this.radio = radio;
-        this.color = color;
-    }
-
     public double calculateArea() {
         double area = Math.PI * (radio * radio);
         return area;
