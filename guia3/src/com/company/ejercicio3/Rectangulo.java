@@ -54,11 +54,11 @@ public class Rectangulo extends Figura {
 
     @Override
     public String toString() {
-        String col = (color == null) ? color : "No tiene";
+        String col = (color == null) ? "No tiene" : color;
         return "Rectangulo{" +
                 ", color=" + col +
-                ", base=" + base +
-                ", altura=" + altura +
+                ", base=" + String.format("%.2f",base) +
+                ", altura=" + String.format("%.2f",altura) +
                 '}';
     }
 }

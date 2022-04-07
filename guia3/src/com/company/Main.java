@@ -5,7 +5,13 @@ import com.company.ejercicio3.*;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("EJERCICIO 1: ");
         ej1();
+
+        System.out.println("\nEJERCICIO 2: ");
+
+        System.out.println("\nEJERCICIO 3: ");
+        ej3();
     }
 
     public static void ej1() {
@@ -31,6 +37,8 @@ public class Main {
         Rectangulo rectangulo = new Rectangulo();
         Cuadrado cuadrado = new Cuadrado();
 
-
+        System.out.println(circulo);
+        System.out.println(rectangulo);
+        System.out.println(cuadrado);
     }
 }

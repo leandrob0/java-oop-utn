@@ -37,9 +37,9 @@ public class Circulo extends Figura {
 
     @Override
     public String toString() {
-        String col = (color == null) ? color : "No tiene";
+        String col = (color == null) ? "No tiene" : color;
         return "Circulo{" +
-                "radio=" + radio +
+                "radio=" + String.format("%.2f",radio) +
                 ", color='" + col + '\'' +
                 '}';
     }
