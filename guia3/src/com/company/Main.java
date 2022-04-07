@@ -9,6 +9,7 @@ public class Main {
         ej1();
 
         System.out.println("\nEJERCICIO 2: ");
+        ej2();
 
         System.out.println("\nEJERCICIO 3: ");
         ej3();
@@ -32,6 +33,10 @@ public class Main {
         System.out.println("Volumen: " + String.format("%.2f", cilindrin2.calculateVolumen()));
 
         System.out.println("\n" + cilindrin2);
+    }
+
+    public static void ej2() {
+        System.out.println("ejercicio2 package hecho.");
     }
 
     public static void ej3() {
