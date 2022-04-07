@@ -1,18 +1,18 @@
 package com.company.ejercicio1;
 
-class Circulo {
-    private double radio;
-    private String color;
+public abstract class Circulo {
+    protected double radio;
+    protected String color = "Rojo";
 
     public Circulo() {
         this.radio = 1.0;
-        this.color = "Rojo";
     }
 
-    public double calculateArea() {
-        double area = Math.PI * (radio * radio);
-        return area;
+    public Circulo(double radio) {
+        this.radio = radio;
     }
+
+    public abstract double calculateArea();
 
     public double getRadio() {
         return radio;

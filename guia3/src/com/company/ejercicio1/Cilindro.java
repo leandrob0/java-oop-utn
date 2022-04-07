@@ -8,6 +8,17 @@ public class Cilindro extends Circulo {
         this.altura = 1.0;
     }
 
+    public Cilindro(double radio, double altura) {
+        super(radio);
+        this.altura = altura;
+    }
+
+    @Override
+    public double calculateArea() {
+        double area = (2 * Math.PI) * (getRadio() * altura) + (2 * (Math.PI * (getRadio() * getRadio())));
+        return area;
+    }
+
     public double calculateVolumen() {
         double volumen = Math.PI * (altura * (getRadio() * getRadio()));
         return volumen;
