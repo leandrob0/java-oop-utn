@@ -30,6 +30,8 @@ public class Main {
         System.out.println("Altura: " + cilindrin2.getAltura());
         System.out.println("Area: " + String.format("%.2f", cilindrin2.calculateArea()));
         System.out.println("Volumen: " + String.format("%.2f", cilindrin2.calculateVolumen()));
+
+        System.out.println("\n" + cilindrin2);
     }
 
     public static void ej3() {

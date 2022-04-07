@@ -12,7 +12,10 @@ public abstract class Circulo {
         this.radio = radio;
     }
 
-    public abstract double calculateArea();
+    public double calculateArea() {
+        double area = Math.PI * Math.pow(radio,2);
+        return area;
+    }
 
     public double getRadio() {
         return radio;
@@ -24,6 +27,6 @@ public abstract class Circulo {
 
     @Override
     public String toString() {
-        return "Radio: " + radio + ", Color: " + color;
+        return "Circulo= {Radio: " + radio + ", Color: " + color + "}";
     }
 }

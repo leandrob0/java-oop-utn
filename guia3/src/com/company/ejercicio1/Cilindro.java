@@ -15,12 +15,12 @@ public class Cilindro extends Circulo {
 
     @Override
     public double calculateArea() {
-        double area = (2 * Math.PI) * (getRadio() * altura) + (2 * (Math.PI * (getRadio() * getRadio())));
+        double area = (2 * Math.PI) * (getRadio() * altura) + (2 * (Math.PI * Math.pow(radio,2)));
         return area;
     }
 
     public double calculateVolumen() {
-        double volumen = Math.PI * (altura * (getRadio() * getRadio()));
+        double volumen = super.calculateArea() * altura;
         return volumen;
     }
 
@@ -30,5 +30,13 @@ public class Cilindro extends Circulo {
 
     public void setAltura(double altura) {
         this.altura = altura;
+    }
+
+    @Override
+    public String toString() {
+        return "Cilindro{" +
+                "subclase de: " + super.toString() +
+                ", altura=" + altura +
+                '}';
     }
 }
