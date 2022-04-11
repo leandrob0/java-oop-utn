@@ -1,6 +1,6 @@
 package com.company.ejercicio2;
 
-public class Persona {
+public abstract class Persona {
     protected String dni;
     protected String first;
     protected String last;
