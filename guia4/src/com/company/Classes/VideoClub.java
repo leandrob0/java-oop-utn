@@ -1,5 +1,6 @@
 package com.company.Classes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class VideoClub {
@@ -21,15 +22,28 @@ public class VideoClub {
         this.alquileres = alquileres;
     }
 
-    public void registrarCliente(String first, String last, String phoneNumber) {
-        if(first == null || first.equals("") || last == null || last.equals("") || phoneNumber == null || phoneNumber.equals("")) {
-            System.out.println("The client must provide a first name, last name, and a phone number.");
-        } else {
-            Cliente newClient = new Cliente(first, last, phoneNumber);
-            clientes.add(newClient);
-            System.out.println("The client was successfully created!");
+    // Estas funciones estarian bien en el caso que hiciera que el video club maneje todas las funcionalidades, para simplificar, no lo hice asi.
+    /*public String agregarPelicula(String title, LocalDate release, int duration, String classification, String origin, String description, int stock, Genero genre) {
+        for(Film f : peliculas) {
+            // Don't allow adding already added movies.
+            if(f.getTitle() == title && f.getDuration() == duration) {
+                return "The movie already exists, you should increase the stock!";
+            }
         }
+
+        Film newFilm = new Film(title,release,duration,classification,origin,description,stock,genre);
+        peliculas.add(newFilm);
+        return "The movie was successfully added.";
     }
+
+    public String registrarCliente(String first, String last, String phoneNumber) {
+        if(first == null || first.equals("") || last == null || last.equals("") || phoneNumber == null || phoneNumber.equals("")) {
+            return "The client must provide a first name, last name, and a phone number.";
+        }
+        Cliente newClient = new Cliente(first, last, phoneNumber);
+        clientes.add(newClient);
+        return "The client was successfully created!";
+    }*/
 
     // Va a retornar un String, que describa el estado del alquiler (alquilado, cliente no registrado, etc...)
     public String alquilarPelicular(Film pelicula, Cliente cliente) {
@@ -67,8 +81,16 @@ public class VideoClub {
         return "Sorry! we don't have that film.";
     }
 
-    public void devolverPelicula(Cliente cliente, Film pelicula) {
-        //logica
+    public String devolverPelicula(Cliente cliente, Film pelicula) {
+        for(Alquiler a : alquileres) {
+            if(a.getCliente().equals(cliente) && a.getPelicula().equals(pelicula)) {
+                alquileres.remove(a);
+                pelicula.setStock(pelicula.getStock() + 1);
+                return "The movie was returned.";
+            }
+        }
+
+        return "This movie wasn't rented by this client.";
     }
 
     public List<Film> getPeliculas() {
