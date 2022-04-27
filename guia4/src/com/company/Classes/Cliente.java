@@ -1,11 +1,13 @@
 package com.company.Classes;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Cliente {
     private String first;
     private String last;
     private String phoneNumber;
+    private List<Alquiler> alquileres;
 
     public Cliente(String first, String last, String phoneNumber) {
         this.first = first;
@@ -35,6 +37,14 @@ public class Cliente {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<Alquiler> getAlquileres() {
+        return alquileres;
+    }
+
+    public void addAlquiler(Alquiler alquiler) {
+        this.alquileres.add(alquiler);
     }
 
     @Override

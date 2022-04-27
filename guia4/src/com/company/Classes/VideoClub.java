@@ -1,6 +1,7 @@
 package com.company.Classes;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VideoClub {
@@ -50,10 +51,12 @@ public class VideoClub {
         boolean existe = false;
 
         // Primero veo si el cliente ya esta registrado en nuestra store.
+        // Como estoy creando las instancias desde el main, esta funcionalidad es al pedo, pero en caso de querer abstraer completamente a el desarrollador, lo haria asi.
         for(Cliente c : clientes) {
             if(cliente.equals(c)) {
                 // El cliente existe, por lo tanto puede alquilar
                 existe = true;
+                break;
             }
         }
         if(!existe) {
@@ -62,35 +65,54 @@ public class VideoClub {
             return "To rent a movie you must first create the client!";
         }
 
-        // Ahora veo si la pelicula existe.
-        for(Film a : peliculas) {
-            if(a.equals(pelicula)) {
-                // Miro primero si hay stock de esa pelicula.
-                if(a.getStock() > 0) {
-                    // Hay stock, le doy la peli.
-                    Alquiler newAlquiler = new Alquiler(pelicula,cliente);
-                    pelicula.setStock(pelicula.getStock() - 1);
-                    alquileres.add(newAlquiler);
+        // Ahora veo si la pelicula tiene stock.
+        if(pelicula.getStock() > 0) {
+            // Hay stock, le doy la peli.
+            Alquiler newAlquiler = new Alquiler(pelicula,cliente);
+            pelicula.setStock(pelicula.getStock() - 1);
+            cliente.addAlquiler(newAlquiler);
+            alquileres.add(newAlquiler);
 
-                } else {
-                    return "We currently don't have that film in stock, return later!";
-                }
-            }
         }
-        // la pelicula no existe, no es posible alquilar.
-        return "Sorry! we don't have that film.";
+        return "We currently don't have that film in stock, return later!";
     }
 
     public String devolverPelicula(Cliente cliente, Film pelicula) {
         for(Alquiler a : alquileres) {
             if(a.getCliente().equals(cliente) && a.getPelicula().equals(pelicula)) {
-                alquileres.remove(a);
                 pelicula.setStock(pelicula.getStock() + 1);
                 return "The movie was returned.";
             }
         }
 
         return "This movie wasn't rented by this client.";
+    }
+
+    public List<Alquiler> devolucionesDeHoy() {
+        int today = LocalDate.now().getDayOfYear();
+        List<Alquiler> a = new ArrayList<>();
+
+        for(Alquiler al : alquileres) {
+            if(al.getFechaFinal().getDayOfYear() == today) {
+                a.add(al);
+            }
+        }
+
+        return a;
+    }
+
+    public List<Alquiler> ultimasDiezDeCadaCliente() {
+        List<Alquiler> a = new ArrayList<>();
+
+        for(Cliente c : clientes) {
+            if(c.getAlquileres().size() > 10) {
+                a.addAll(c.getAlquileres().subList(0,10));
+            } else {
+                a.addAll(c.getAlquileres());
+            }
+        }
+
+        return a;
     }
 
     public List<Film> getPeliculas() {

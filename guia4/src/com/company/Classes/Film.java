@@ -6,14 +6,14 @@ import java.util.Objects;
 public class Film {
     private String title;
     private LocalDate release;
-    private int duration;
+    private double duration;
     private String classification;
     private String origin;
     private String description;
     private int stock;
-    private Genero genre;
+    private String genre;
 
-    public Film(String title, LocalDate release, int duration, String classification, String origin, String description, int stock, Genero genre) {
+    public Film(String title, LocalDate release, double duration, String classification, String origin, String description, int stock, String genre) {
         this.title = title;
         this.release = release;
         this.duration = duration;
@@ -40,11 +40,11 @@ public class Film {
         this.release = release;
     }
 
-    public int getDuration() {
+    public double getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(double duration) {
         this.duration = duration;
     }
 
@@ -80,11 +80,11 @@ public class Film {
         this.stock = stock;
     }
 
-    public Genero getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(Genero genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
