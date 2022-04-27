@@ -2,7 +2,8 @@ package com.company.Classes;
 
 import java.util.Objects;
 
-public class Cliente {
+// No es publica ya que no quiero que se pueda acceder fuera de este paquete.
+class Cliente {
     private String first;
     private String last;
     private String phoneNumber;
