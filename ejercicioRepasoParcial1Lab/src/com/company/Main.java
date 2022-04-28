@@ -1,9 +1,10 @@
 package com.company;
 
+import com.company.Enum.Genres;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
 
         // super clase de diario, revista y libro. con codigo,titulo (o titular en diarios y revistas), y anio de publicacion.
 
