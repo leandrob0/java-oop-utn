@@ -23,8 +23,7 @@ public class VideoClub {
         this.alquileres = alquileres;
     }
 
-    // Estas funciones estarian bien en el caso que hiciera que el video club maneje todas las funcionalidades, para simplificar, no lo hice asi.
-    /*public String agregarPelicula(String title, LocalDate release, int duration, String classification, String origin, String description, int stock, Genero genre) {
+    public String agregarPelicula(String title, LocalDate release, int duration, String classification, String origin, String description, int stock, String genre) {
         for(Film f : peliculas) {
             // Don't allow adding already added movies.
             if(f.getTitle() == title && f.getDuration() == duration) {
@@ -44,29 +43,23 @@ public class VideoClub {
         Cliente newClient = new Cliente(first, last, phoneNumber);
         clientes.add(newClient);
         return "The client was successfully created!";
-    }*/
+    }
 
     // Va a retornar un String, que describa el estado del alquiler (alquilado, cliente no registrado, etc...)
-    public String alquilarPelicular(Film pelicula, Cliente cliente) {
-        boolean existe = false;
+    public String alquilarPelicular(String peliculaTitle, String firstCliente, String lastCliente) {
+        Cliente cliente = null;
 
-        // Primero veo si el cliente ya esta registrado en nuestra store.
-        // Como estoy creando las instancias desde el main, esta funcionalidad es al pedo, pero en caso de querer abstraer completamente a el desarrollador, lo haria asi.
         for(Cliente c : clientes) {
-            if(cliente.equals(c)) {
-                // El cliente existe, por lo tanto puede alquilar
-                existe = true;
-                break;
+            if(c != null) {
+                if(firstCliente.equals(c.getFirst()) && lastCliente.equals(c.getLast())) {
+                    cliente = c;
+                }
             }
         }
-        if(!existe) {
-            // El cliente no existe, primero hay que crearlo.
-            // Podria pedirle por consola que ingrese los datos pero decidi que no.
-            return "To rent a movie you must first create the client!";
-        }
+        if(cliente == null) return "To rent a movie you must first create the client!";
 
-        // Ahora veo si la pelicula tiene stock.
-        if(pelicula.getStock() > 0) {
+        Film pelicula = buscarPelicula(peliculaTitle);
+        if(pelicula.getStock() > 0 && pelicula != null) {
             // Hay stock, le doy la peli.
             Alquiler newAlquiler = new Alquiler(pelicula,cliente);
             pelicula.setStock(pelicula.getStock() - 1);
@@ -77,15 +70,18 @@ public class VideoClub {
         return "We currently don't have that film in stock, return later!";
     }
 
-    public String devolverPelicula(Cliente cliente, Film pelicula) {
+    public Film devolverPelicula(Cliente cliente, Film pelicula) {
+        Film peli = null;
         for(Alquiler a : alquileres) {
-            if(a.getCliente().equals(cliente) && a.getPelicula().equals(pelicula)) {
-                pelicula.setStock(pelicula.getStock() + 1);
-                return "The movie was returned.";
+            if(a != null) {
+                if(a.getCliente().equals(cliente) && a.getPelicula().equals(pelicula)) {
+                    pelicula.setStock(pelicula.getStock() + 1);
+                    peli = pelicula;
+                }
             }
         }
 
-        return "This movie wasn't rented by this client.";
+        return peli;
     }
 
     public List<Alquiler> devolucionesDeHoy() {
@@ -93,8 +89,10 @@ public class VideoClub {
         List<Alquiler> a = new ArrayList<>();
 
         for(Alquiler al : alquileres) {
-            if(al.getFechaFinal().getDayOfYear() == today) {
-                a.add(al);
+            if(al != null) {
+                if(al.getFechaFinal().getDayOfYear() == today) {
+                    a.add(al);
+                }
             }
         }
 
@@ -105,14 +103,29 @@ public class VideoClub {
         List<Alquiler> a = new ArrayList<>();
 
         for(Cliente c : clientes) {
-            if(c.getAlquileres().size() > 10) {
-                a.addAll(c.getAlquileres().subList(0,10));
-            } else {
-                a.addAll(c.getAlquileres());
+            if(c != null) {
+                if(c.getAlquileres().size() > 10) {
+                    a.addAll(c.getAlquileres().subList(0,10));
+                } else {
+                    a.addAll(c.getAlquileres());
+                }
             }
         }
 
         return a;
+    }
+
+    private Film buscarPelicula(String title) {
+        Film peli = null;
+        for(Film f : peliculas) {
+            if(f != null) {
+                if(f.getTitle().equals(title)) {
+                    peli = f;
+                }
+            }
+        }
+
+        return peli;
     }
 
     public List<Film> getPeliculas() {
