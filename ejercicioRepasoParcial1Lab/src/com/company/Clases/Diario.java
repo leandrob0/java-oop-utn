@@ -5,50 +5,22 @@ import com.company.Interfaz.DocumentFunctionality;
 import java.time.LocalDate;
 
 public class Diario extends Documento implements DocumentFunctionality {
-    public Diario(String codigo, String titulo, LocalDate publicacion) {
-        super(codigo, titulo, publicacion);
-        super.agregarDisponible(this);
+    public Diario(String titulo, String codigo, LocalDate publicacion) {
+        super(titulo, codigo, publicacion);
     }
 
     @Override
-    public String alquilar(Documento d) {
-        try {
-            if(super.verSiEstaAlquilado(d)) {
-                return "El diario esta siendo leido";
-            }
-        } catch (NullPointerException e) {
-            return e.getMessage();
-        }
-
-        super.agregarNoDisponible(d);
-
-        return "Diario alquilado correctamente";
+    public String alquilar() {
+        return "null";
     }
 
     @Override
-    public String devolver(Documento d) {
-        try {
-            if(!super.verSiEstaAlquilado(d)) {
-                return "El diario no esta siendo leido";
-            }
-        } catch (NullPointerException e) {
-            return e.getMessage();
-        }
-
-        super.agregarDisponible(d);
-        return "Diario devuelto correctamente";
+    public String devolver() {
+        return "null";
     }
 
     @Override
-    public String alquilado(Documento d) {
-        try {
-            if(super.verSiEstaAlquilado(d)) {
-                return "El diario esta siendo leido.";
-            }
-        } catch (NullPointerException e) {
-            return e.getMessage();
-        }
-
-        return "Libro disponible para leer.";
+    public String alquilado() {
+        return "null";
     }
 }
