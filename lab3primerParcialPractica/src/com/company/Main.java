@@ -34,6 +34,11 @@ public class Main {
 
         for(Instrumento i : instrumentos) {
             System.out.println(i);
+            if(i instanceof GuitarraElectrica) {
+                ((GuitarraElectrica) i).SonidoAmplificado();
+            } else if(i instanceof Bajo) {
+                ((Bajo) i).SonidoAmplificado();
+            }
         }
     }
 }
