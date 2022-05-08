@@ -6,8 +6,8 @@ public class InsBaterias extends Instrumento{
 
     public InsBaterias(String marca, int tambores, int platillos) {
         super(tambores*3000 + platillos*2000, marca);
-        this.tambores = tambores;
-        this.platillos = platillos;
+        this.tambores = tambores >= 3 ? tambores : 3;
+        this.platillos = platillos >= 1 && platillos <=5 ? platillos : 1;
     }
 
     @Override

@@ -34,25 +34,29 @@ public class Main {
         instrumentos.add(bato);
 
         for(Instrumento i : instrumentos) {
-            System.out.println(i);
-            if(i instanceof GuitarraElectrica) {
-                ((GuitarraElectrica) i).SonidoAmplificado();
-            } else if(i instanceof Bajo) {
-                ((Bajo) i).SonidoAmplificado();
+            if(i != null) {
+                System.out.println(i);
+                if(i instanceof GuitarraElectrica) {
+                    ((GuitarraElectrica) i).SonidoAmplificado();
+                } else if(i instanceof Bajo) {
+                    ((Bajo) i).SonidoAmplificado();
+                }
             }
         }
     }
 
     public static void ejercicio5(List<Instrumento> instrumentos) {
         for(Instrumento i : instrumentos) {
-            if(i instanceof GuitarraElectrica) {
-                i.setPrecio(i.getPrecio() + (i.getPrecio() * 0.05));
-            } else if(i instanceof GuitarraAcustica) {
-                i.setPrecio(i.getPrecio() + (i.getPrecio() * 0.10));
-            } else if(i instanceof Bajo) {
-                i.setPrecio(i.getPrecio() + (i.getPrecio() * 0.20));
-            } else {
-                i.setPrecio(i.getPrecio() + (i.getPrecio() * 0.15));
+            if(i != null) {
+                if(i instanceof GuitarraElectrica) {
+                    i.setPrecio(i.getPrecio() + (i.getPrecio() * 0.05));
+                } else if(i instanceof GuitarraAcustica) {
+                    i.setPrecio(i.getPrecio() + (i.getPrecio() * 0.10));
+                } else if(i instanceof Bajo) {
+                    i.setPrecio(i.getPrecio() + (i.getPrecio() * 0.20));
+                } else {
+                    i.setPrecio(i.getPrecio() + (i.getPrecio() * 0.15));
+                }
             }
         }
     }
